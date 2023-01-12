@@ -4,7 +4,8 @@ import { useSearchParams } from 'react-router-dom';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 import { MoviesList } from "components/MoviesList/MoviesList";
 import { getMovieByName } from '../servises/Api';
-export const Movies = () => {
+
+const Movies = () => {
     const [movies, setMovies] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -39,9 +40,10 @@ export const Movies = () => {
             />
             {movies && <MoviesList movies={movies} />}
             {movies && movies.length === 0 && (
-                <div>There are not movies with such name</div>
+                <div>Not movies with this name</div>
             )}
         </>
     );
 };
 
+export default Movies;

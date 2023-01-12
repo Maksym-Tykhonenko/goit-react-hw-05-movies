@@ -4,7 +4,7 @@ import { MoviesList } from "components/MoviesList/MoviesList";
 
 
 
-export const Home = () => {
+const Home = () => {
     const [movies, setMovies] = useState([]);
     console.log(movies)
 
@@ -20,3 +20,5 @@ export const Home = () => {
         </>
     );
 };
+
+export default Home;
