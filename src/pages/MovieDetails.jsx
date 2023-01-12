@@ -1,5 +1,6 @@
 import { getInfoMovie, IMAGE_URL } from '../servises/Api';
-import { useParams, useLocation, Link } from 'react-router-dom';
+
+import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 
@@ -9,8 +10,8 @@ export const MovieDetails = () => {
     console.log(movie)
   
     const location = useLocation();
-
     const [backLinkHref] = useState(() => location.state?.from ?? '/'); 
+
     useEffect(() => {
       getInfoMovie(movieId).then(setMovie);
     }, [movieId]); 
@@ -29,7 +30,7 @@ export const MovieDetails = () => {
                 <h1>{title}</h1>
                 <h2>Overview :</h2>
                 <p>{overview}</p>
-                <p><h3>User score :</h3> {vote_average}</p>
+                <p><span>User score :</span> {vote_average}</p>
                 <h2>Genres :</h2>
                 <ul>
                     {genres.map(genre => (
@@ -37,6 +38,9 @@ export const MovieDetails = () => {
                     ))}
                 </ul>
             </div>
+            <Link to={`cast`}>Cast</Link>
+            <Link to={`reviews`}>Reviews</Link>
+            <Outlet/>
         </>
     );
 }
