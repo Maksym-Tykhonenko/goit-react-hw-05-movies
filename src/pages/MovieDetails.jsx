@@ -1,7 +1,9 @@
 import { getInfoMovie, IMAGE_URL } from '../servises/Api';
 
-import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
+import {Link, Img, FilmInfo } from './MovieDetails.styled'
 
 
 export const MovieDetails = () => {
@@ -25,8 +27,8 @@ export const MovieDetails = () => {
     return (
         <>
             <Link to={backLinkHref}>Back to film list</Link>
-            <div>
-                <img src={`${IMAGE_URL}/${poster_path}`} alt={title} />
+            <FilmInfo>
+                <Img src={`${IMAGE_URL}/${poster_path}`} alt={title} />
                 <h1>{title}</h1>
                 <h2>Overview :</h2>
                 <p>{overview}</p>
@@ -37,7 +39,7 @@ export const MovieDetails = () => {
                         <li key={genre.id}>{genre.name}</li>
                     ))}
                 </ul>
-            </div>
+            </FilmInfo>
             <Link to={`cast`}>Cast</Link>
             <Link to={`reviews`}>Reviews</Link>
             <Outlet/>

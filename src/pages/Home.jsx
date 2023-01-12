@@ -15,7 +15,7 @@ export const Home = () => {
     
     return (
         <>
-            <p>Trending today</p>
+            <h2>Trending today</h2>
             <MoviesList movies={movies} />
         </>
     );
